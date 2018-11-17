@@ -1,0 +1,13 @@
+{# 宏定义  -- 创建商品 #}
+{% macro create_goods(name, price, num) %}
+    <div class="goods" style="border: 1px solid gray; margin: 5px; padding: 5px;">
+        商品名称: {{ name }}    商品价格: ￥{{ price }}  商品个数: {{ num }}
+    </div>
+{% endmacro %}
+
+
+{% macro line() %}
+    <br>
+    <hr>
+    <br>
+{% endmacro %}

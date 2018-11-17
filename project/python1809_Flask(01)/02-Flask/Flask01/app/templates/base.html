@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <style>
+        h1{
+            color: red;
+        }
+        h2{
+            color: blue;
+        }
+        .header{
+            height: 70px;
+            line-height: 70px;
+            font-size: 30px;
+            background: yellow;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    {% block extcss %}
+    {% endblock %}
+</head>
+
+<body>
+
+{% block header %}
+<div class="header">
+    爱鲜蜂
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    主体内容
+</div>
+{% endblock %}
+
+{% block slider %}
+    <p> 侧边栏(base.html) </p>
+
+    {% block slider1 %}
+    {% endblock %}
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+</body>
+
+</html>

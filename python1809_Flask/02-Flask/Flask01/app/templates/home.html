@@ -1,0 +1,70 @@
+{# extends继承#}
+{% extends 'base.html' %}
+
+
+{# block 挖坑、填坑#}
+{% block content %}
+
+{#    静态文件加载#}
+    <img src="{{ url_for('static', filename='img/test.jpg') }}" alt="">
+    
+    <h1> 填坑1 </h1>
+    <h2> 填坑2 </h2>
+
+    <p>
+        {{ name1 }}
+    </p>
+    <p>
+        {{ name2 }}
+    </p>
+    <p>
+        {{ name3 }}
+    </p>
+
+
+    {# 宏定义 marco #}
+    {% macro hello() %}
+        <p>你好</p>
+        <p> hello </p>
+        <p> hi </p>
+    {% endmacro %}
+
+    {# 调用#}
+    {{ hello() }}
+    {{ hello() }}
+    {{ hello() }}
+
+
+{#    外部宏定义的导入，以及调用#}
+    {% from 'mymacro.html' import line %}
+    {{ line() }}
+
+
+    {% from 'mymacro.html' import create_goods %}
+    {% for goods in goodslist %}
+
+        {% if loop.first %}
+            <h3> 商品列表 - 开头 </h3>
+        {% elif loop.last %}
+            <h3> 商品列表 - 结尾 </h3>
+        {% else %}
+            {{ loop.index }}、{{ create_goods(goods.name, goods.price, goods.num) }}
+        {% endif %}
+    {% endfor %}
+
+
+    {{ line() }}
+
+{% endblock %}
+
+
+{% block slider %}
+    {{ super() }}
+    <h3> home页面的侧边栏 </h3>
+{% endblock %}
+
+
+{# 包含include #}
+{% block footer %}
+    {% include 'home-footer.html' %}
+{% endblock %}
